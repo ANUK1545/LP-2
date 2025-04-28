@@ -1,0 +1,24 @@
+commands
+gcloud init
+gcloud components install app-engine-python
+gcloud app create
+(create a new project first) 
+nano app.yml
+runtime: python39
+
+handlers:
+- url: /.*
+  script: auto
+nano main.py
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return 'Hello, World from Kavya!'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)
+pip install flask
+gcloud app deploy
